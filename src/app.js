@@ -24,3 +24,6 @@ app.post('/tasks', (req, res) => {
 });
 
 app.listen(3000, ()=> console.log("API running on port 3000"));
+
+const tasksRouter = require('./routes/tasks');
+app.use('/tasks', tasksRouter);
