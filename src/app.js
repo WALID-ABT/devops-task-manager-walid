@@ -10,7 +10,13 @@ let tasks = [
 ];
 
 app.get('/', (req, res) => {
+ feature/routes-refactor
 res.json({ message: "Welcome from ABT branch" });
+ HEAD
+res.json({ message: "Welcome from MAIN branch" });
+res.json({ message: "Welcome from FEATURE branch" });
+ feature/routes-refactor
+ main
 });
 
 app.get('/tasks', (req, res) => {
