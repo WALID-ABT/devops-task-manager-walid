@@ -1,19 +1,21 @@
 const express = require('express');
 const app = express();
+
 app.use(express.json());
 
-// 1. Import and use routes (Lab 2 logic)
 const tasksRouter = require('./routes/tasks');
 app.use('/tasks', tasksRouter);
 
-// 2. Define the root route (Tested in Lab 3)
 app.get('/', (req, res) => {
-    res.json({ message: "Task Manager API running (Lab2)" });
+  res.json({ message: "Task Manager API running (Lab 2)" });
 });
 
-// 3. Export for testing and wrap listener
+// CI test change
+console.log("Testing CI with a Pull Request");
+
+// This ensures the server only listens when run directly, not when tested
 if (require.main === module) {
-    app.listen(3000, () => console.log("API running on port 3000"));
+  app.listen(3000, () => console.log("API running on port 3000"));
 }
 
 module.exports = app;
