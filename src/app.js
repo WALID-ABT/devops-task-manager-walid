@@ -7,7 +7,21 @@ const tasksRouter = require('./routes/tasks');
 app.use('/tasks', tasksRouter);
 
 app.get('/', (req, res) => {
+ feature/ci-test
   res.json({ message: "Task Manager API running (Lab 2)" });
+
+ feature/routes-refactor
+res.json({ message: "Welcome from ABT branch" });
+ HEAD
+res.json({ message: "Welcome from MAIN branch" });
+res.json({ message: "Welcome from FEATURE branch" });
+ feature/routes-refactor
+ main
+});
+
+app.get('/tasks', (req, res) => {
+  res.json(tasks);
+ main
 });
 
 // CI test change
