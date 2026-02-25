@@ -2,18 +2,16 @@ const express = require('express');
 const app = express();
 app.use(express.json());
 
-// 1. Import the router (MUST come before app.use)
+// 1. Import and use routes (Lab 2 logic)
 const tasksRouter = require('./routes/tasks');
-
-// 2. Use the router
 app.use('/tasks', tasksRouter);
 
-// 3. Define the root route (The one Jest is testing)
+// 2. Define the root route (Tested in Lab 3)
 app.get('/', (req, res) => {
     res.json({ message: "Task Manager API running (Lab2)" });
 });
 
-// 4. Export the app and wrap the listener (Required for Lab 3)
+// 3. Export for testing and wrap listener
 if (require.main === module) {
     app.listen(3000, () => console.log("API running on port 3000"));
 }
