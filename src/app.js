@@ -11,7 +11,14 @@ let tasks = [
 ];
 
 app.get('/', (req, res) => {
+<<<<<<< HEAD
   res.json({ message: "DevOps Task Manager API is running ABT branch" });
+=======
+ HEAD
+res.json({ message: "Welcome from MAIN branch" });
+res.json({ message: "Welcome from FEATURE branch" });
+ feature/routes-refactor
+>>>>>>> origin/main
 });
 
 app.get('/tasks', (req, res) => {
