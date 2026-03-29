@@ -2,6 +2,21 @@ name: CI Pipeline
 
 on:
   push:
+ feature/docker
+
+ feature/ghcr-delivery
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  build-test-deliver:
+
+ main
     branches:
       - main
   pull_request:
@@ -10,6 +25,10 @@ on:
 
 jobs:
   build-and-test:
+ feature/docker
+
+ main
+ main
     runs-on: ubuntu-latest
     steps:
       - name: Checkout source code
@@ -24,7 +43,31 @@ jobs:
         run: npm ci
 
       - name: Run tests
+ feature/docker
         run: npm test
 
       - name: Build Docker image
         run: docker build -t task-manager-api .
+
+ feature/ghcr-delivery
+        run: npm test
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: true
+          tags: |
+            ghcr.io/s3nec4/task-manager-api:latest
+            ghcr.io/s3nec4/task-manager-api:prod
+
+        run: npm test
+ main
+ main
