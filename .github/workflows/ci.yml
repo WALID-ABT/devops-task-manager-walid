@@ -2,6 +2,7 @@ name: CI Pipeline
 
 on:
   push:
+ feature/ghcr-delivery
     branches: [main]
   pull_request:
     branches: [main]
@@ -12,6 +13,16 @@ permissions:
 
 jobs:
   build-test-deliver:
+
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-and-test:
+ main
     runs-on: ubuntu-latest
     steps:
       - name: Checkout source code
@@ -26,6 +37,7 @@ jobs:
         run: npm ci
 
       - name: Run tests
+ feature/ghcr-delivery
         run: npm test
 
       - name: Login to GitHub Container Registry
@@ -43,3 +55,6 @@ jobs:
           tags: |
             ghcr.io/s3nec4/task-manager-api:latest
             ghcr.io/s3nec4/task-manager-api:prod
+
+        run: npm test
+ main
