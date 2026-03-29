@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "main": "src/app.js",
   "scripts": {
-<<<<<<< HEAD
     "start": "node src/app.js",
     "test": "jest"
   },
@@ -16,12 +15,3 @@
     "supertest": "^7.2.2"
   }
 }
-=======
-    "start": "node src/app.js"
-  },
-  "dependencies": {
-    "express": "^4.18.2",
-    "cors": "^2.8.5"
-  }
-}
->>>>>>> 6e759edc84d1ac5c332ca0eec8f79a324850caa4
